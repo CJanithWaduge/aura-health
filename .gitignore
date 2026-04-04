@@ -49,6 +49,7 @@ next-env.d.ts
 # Diagrams & Flowcharts
 *.drawio
 /docs/flowcharts/
+/flowcharts/
 
 # Personal notes
 notes.txt
