@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AURA Health
+### Advanced Health Management and Analytics Platform
 
-## Getting Started
+AURA Health is a secure, role-based health management system designed to bridge the gap between patients and healthcare providers through data-driven insights. The platform prioritizes high data integrity, identity security, and scalable architecture, adhering to modern software engineering best practices.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Current Project Status: Active Development
+The project is currently in its initial development phase, focusing on establishing a robust **Identity and Access Management (IAM)** framework. All core authentication and authorization protocols have been implemented and verified through a rigorous manual QA process.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Core Features (Implemented and Verified)
+* **Secure Identity Management:** Integrated Firebase Authentication providing secure sign-up and sign-in workflows.
+* **Role-Based Access Control (RBAC):** Sophisticated redirection logic that distinguishes between `Doctor` and `Patient` users based on Firestore metadata.
+* **Automated Email Verification:** Decoupled registration flow where Firestore profiles are provisioned only upon successful email validation to ensure data quality.
+* **Security & Brute-Force Protection:** Implementation of rate-limiting through a 30-second lockout mechanism after three consecutive failed login attempts.
+* **State-Synchronized Provisioning:** Fallback logic within the `useAuth` hook to maintain 100% consistency between Firebase Auth and Firestore user documents.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technical Architecture
 
-## Learn More
+| Component | Technology Stack |
+| :--- | :--- |
+| **Frontend Framework** | Next.js 14 (App Router) |
+| **Language** | TypeScript |
+| **Authentication** | Firebase Auth |
+| **Database** | Cloud Firestore (NoSQL) |
+| **Styling** | Tailwind CSS |
+| **QA Methodology** | Manual Testing via Structured Test Cases |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Quality Assurance (QA) Metrics
+To ensure software reliability, the authentication module was subjected to a comprehensive testing suite. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Total Test Cases executed:** 07
+* **Pass Rate:** 100%
+* **Focus Areas:** Edge-case handling for unverified users, data persistence during session transitions, and UI/UX consistency under error states.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Roadmap
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Milestone 1: Foundation (Completed)
+* Initial project scaffolding with TypeScript.
+* Centralized Authentication and Authorization logic.
+* QA verification of all entry points.
+
+### Milestone 2: Patient and Provider Dashboards (In Progress)
+* Development of a modular Dashboard UI for Patients.
+* Implementation of Professional Profile verification for Medical Doctors.
+* Firestore-driven health record logging system.
+
+### Milestone 3: AI Integration (Planned)
+* Deployment of LLM-based health summary generation.
+* Advanced data visualization for patient health metrics.
+
+---
+
+## Directory Structure Highlights
+* `src/hooks/useAuth.ts`: Manages the global authentication state and Firestore document synchronization.
+* `src/components/auth`: Contains reusable UI components for the registration and verification lifecycle.
+* `docs/qa`: Contains the official test plan and status reports for audit purposes.
+
+---
+
+**Developed by W2 Tech Solutions**
+*Committed to engineering secure and scalable health technology solutions.*

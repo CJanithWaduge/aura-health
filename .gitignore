@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Documentation & Planning
+*.xlsx
+*.xls
+*.csv
+*.pdf
+
+# Diagrams & Flowcharts
+*.drawio
+/docs/flowcharts/
+
+# Personal notes
+notes.txt
