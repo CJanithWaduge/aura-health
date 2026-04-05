@@ -30,6 +30,34 @@ The project is currently in its initial development phase, focusing on establish
 
 ---
 
+## Data Security and Privacy Governance
+
+AURA Health adheres to rigorous data protection protocols to ensure the confidentiality and integrity of sensitive user information. The platform implements a multi-layered security architecture:
+
+### 1. Application-Level Data Encryption (AES-256)
+All sensitive personal identifiers and private health records are encrypted at the application level using the **AES-256 (Advanced Encryption Standard)** algorithm before being committed to the Cloud Firestore database. This ensures that sensitive data remains cryptographically secure and unreadable, even in the event of unauthorized access to the database layer.
+
+### 2. Secure Identity Management
+The platform leverages **Firebase Authentication** for identity services. Under this framework:
+* **Zero Plain-Text Storage:** User passwords are never stored in plain text. Firebase utilizes industry-standard salted hashing algorithms to protect credentials.
+* **Email Verification:** Access to the platform's core features is restricted until a user successfully verifies their identity via an automated SMTP-based verification link.
+
+### 3. Role-Based Access Control (RBAC)
+Authorization is strictly enforced through a combination of frontend logic and Firestore security rules. Users are categorized into distinct roles (`Doctor` or `Patient`). The system ensures:
+* Automated redirection based on user-role metadata.
+* Isolation of data shards to prevent unauthorized cross-role data access.
+
+### 4. Brute-Force and Credential Stuffing Mitigation
+To protect against automated login attacks, the system incorporates a rate-limiting mechanism:
+* **Lockout Protocol:** Accounts are subject to a 30-second cooling-off period after three consecutive failed authentication attempts.
+* **State Persistence:** Authentication states are synchronized across the application to prevent session hijacking.
+
+### 5. Environment Integrity
+System-critical information, including Firebase API keys and encryption secrets, are managed via strictly scoped environment variables (`.env`), ensuring that sensitive configurations are never exposed in the version control history.
+
+---
+**Technical Standard:** AES-256 CBC/GCM Mode | Firebase Auth v10+ | Firestore Security Rules
+
 ## Quality Assurance (QA) Metrics
 To ensure software reliability, the authentication module was subjected to a comprehensive testing suite. 
 
